@@ -1,0 +1,10 @@
+type RequestMade @entity {
+  id: ID!
+  requestId: BigInt! # uint256
+  location_address: String! # string
+}
+
+type ResponseReceived @entity {
+  id: ID!
+  requestId: BigInt! # uint256
+}

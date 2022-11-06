@@ -1,0 +1,26 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Xian
+    network: mumbai
+    source:
+      address: "0x29215B96ff3D925a4A4408831FbC38487DFD4E24"
+      abi: Xian
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - RequestMade
+        - ResponseReceived
+      abis:
+        - name: Xian
+          file: ./abis/Xian.json
+      eventHandlers:
+        - event: RequestMade(uint256,string)
+          handler: handleRequestMade
+        - event: ResponseReceived(uint256)
+          handler: handleResponseReceived
+      file: ./src/xian.ts
